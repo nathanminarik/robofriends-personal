@@ -3,6 +3,7 @@ import 'tachyons';
 import { CardList } from './../components/CardList';
 import { SearchBox } from './../components/SearchBox';
 import { Scroll } from './../components/Scroll';
+import { ErrorBoundary } from './../components/ErrorBoundary';
 import './App.css';
 
 export class App extends Component {
@@ -34,7 +35,9 @@ export class App extends Component {
         <h1 className="f1">Robo Friends</h1>
         <SearchBox onSearchChange={this.onSearchChange} />
         <Scroll>
-          <CardList robots={filteredRobots} />
+          <ErrorBoundary>
+            <CardList robots={filteredRobots} />
+          </ErrorBoundary>
         </Scroll>
       </div>
     );
